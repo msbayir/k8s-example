@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: <deploymentName>
+  namespace: <namespace>
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app: <deploymentName>
+  template:
+    metadata:
+      labels:
+        app: <deploymentName and other labels>
+    spec:
+      containers:
+      - name: <containerName>
+        image : <containerImage>
+        ports:
+        - containerPort: <containerPort>
+      imagePullSecrets: 
+        - name: <pullSecret>
