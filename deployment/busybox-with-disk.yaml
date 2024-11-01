@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: busybox-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: busybox-app
+  template:
+    metadata:
+      labels:
+        app: busybox-app
+    spec:
+      containers:
+        - name: busybox
+          image: busybox
+          command:
+            - sleep
+            - "3600"
+          volumeMounts:
+          - mountPath: "/var/www/html"
+            name: <DISKNAME>
+      volumes:
+        - name: <DISKNAME>
+          persistentVolumeClaim:
+            claimName: <PVCNAME>
