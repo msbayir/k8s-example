@@ -22,8 +22,5 @@ spec:
         image : <containerImage>
         ports:
         - containerPort: <containerPort>
-          envFrom:
-          - configMapRef:
-              name: <configMap>
       imagePullSecrets: 
         - name: <pullSecret>
