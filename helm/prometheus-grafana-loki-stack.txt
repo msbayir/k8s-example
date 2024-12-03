@@ -1,0 +1,9 @@
+helm repo add loki https://grafana.github.io/loki/charts
+helm repo add grafana https://grafana.github.io/helm-charts
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+
+kubectl create namespace monitor
+
+helm install grafana grafana/grafana --namespace monitoring
+helm install loki grafana/loki-stack --namespace monitoring
+helm install prometheus prometheus-community/prometheus --namespace monitoring
